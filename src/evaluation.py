@@ -4,7 +4,7 @@ Calculates BLEU scores and idiom-specific metrics.
 """
 
 import json
-from typing import Dict, List
+from typing import Dict, List, Any
 from pathlib import Path
 import sacrebleu
 from collections import defaultdict
@@ -78,7 +78,7 @@ def evaluate_single(
     idiom_en: str,
     idiom_si: str,
     source: str
-) -> Dict[str, any]:
+) -> Dict[str, Any]:
     """
     Evaluate a single translation.
     
@@ -110,7 +110,7 @@ def evaluate_single(
     }
 
 
-def evaluate_batch(predictions: List[str], test_data: List[Dict]) -> Dict[str, any]:
+def evaluate_batch(predictions: List[str], test_data: List[Dict]) -> Dict[str, Any]:
     """
     Evaluate a batch of translations.
     

@@ -4,7 +4,7 @@ Creates conservative augmentations without fake data.
 """
 
 import json
-from typing import Dict, List
+from typing import Dict, List, Any
 from pathlib import Path
 
 
@@ -47,7 +47,7 @@ def create_augmented_examples(data: List[Dict]) -> List[Dict]:
     return augmented
 
 
-def validate_augmentation(original: List[Dict], augmented: List[Dict]) -> Dict[str, any]:
+def validate_augmentation(original: List[Dict], augmented: List[Dict]) -> Dict[str, Any]:
     """
     Validate augmented data quality.
     
@@ -100,7 +100,7 @@ def save_augmented_data(data: List[Dict], output_path: str) -> None:
     print(f"✓ Saved {len(data)} augmented examples to {output_path}")
 
 
-def augment_dataset(input_path: str, output_path: str) -> Dict[str, any]:
+def augment_dataset(input_path: str, output_path: str) -> Dict[str, Any]:
     """
     Main pipeline for data augmentation.
     

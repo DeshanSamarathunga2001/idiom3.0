@@ -7,7 +7,7 @@ import pandas as pd
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 
 
 def load_excel(filepath: str) -> pd.DataFrame:
@@ -28,7 +28,7 @@ def load_excel(filepath: str) -> pd.DataFrame:
         raise Exception(f"Failed to load Excel file: {e}")
 
 
-def validate_data(df: pd.DataFrame) -> Dict[str, any]:
+def validate_data(df: pd.DataFrame) -> Dict[str, Any]:
     """
     Validate data quality and return statistics.
     
@@ -183,7 +183,7 @@ def export_to_json(data: List[Dict], output_path: str) -> None:
     print(f"✓ Exported {len(data)} examples to {output_path}")
 
 
-def process_dataset(excel_path: str, output_dir: str, test_size: int = 50) -> Dict[str, any]:
+def process_dataset(excel_path: str, output_dir: str, test_size: int = 50) -> Dict[str, Any]:
     """
     Main pipeline to process the dataset.
     
