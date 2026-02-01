@@ -4,6 +4,7 @@ Handles model setup, training loop, and checkpointing.
 """
 
 import json
+import re
 import torch
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -34,8 +35,6 @@ def setup_model_and_tokenizer(
     Returns:
         model, tokenizer
     """
-    import re
-    
     print(f"Loading model: {model_name}")
     
     # Load tokenizer - try NLLB-specific first, then Auto
@@ -43,7 +42,7 @@ def setup_model_and_tokenizer(
     try:
         tokenizer = NllbTokenizer.from_pretrained(model_name)
         print(f"✓ Loaded NllbTokenizer")
-    except:
+    except Exception:
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         print(f"✓ Loaded AutoTokenizer")
     
