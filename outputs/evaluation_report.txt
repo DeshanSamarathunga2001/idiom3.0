@@ -1,0 +1,45 @@
+============================================================
+EVALUATION REPORT
+============================================================
+
+Overall Metrics:
+  BLEU Score: 5.63
+  Idiom Accuracy: 0.0%
+  Literal Translation Rate: 0.0%
+  Total Examples: 50
+
+Per-Idiom Performance:
+------------------------------------------------------------
+  Alive and kicking:
+    Accuracy: 0.0% (2 examples)
+    Avg BLEU: 9.89
+  A.B.C:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 6.27
+  In abeyance:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 6.27
+  Above all:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 6.87
+  Above-board:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 12.22
+  Terms of abuse:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 5.67
+  Cheek by jowl:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 6.77
+  With one accord:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 4.46
+  An account to settle:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 7.47
+  Clear as crystal:
+    Accuracy: 0.0% (1 examples)
+    Avg BLEU: 11.36
+  ... and 39 more idioms
+
+============================================================
