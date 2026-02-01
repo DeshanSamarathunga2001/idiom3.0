@@ -1,0 +1,402 @@
+[
+  {
+    "idiom_en": "A.B.C",
+    "idiom_si": "අයනු ආයනු",
+    "meaning": "Something is very easy, simple, or requires little effort",
+    "source_en": "He doesn't know even the A. B. C. of literary\ncriticism.",
+    "target_si": "සාහිත්‍ය විවේචනයේ අයන්න වත් ඔහු නොදනියි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "In abeyance",
+    "idiom_si": "අත් හිටලා",
+    "meaning": "a state of not happening or being used at present",
+    "source_en": "That matter has now been <IDIOM>in abeyance</IDIOM> for a\nnumber of years.",
+    "target_si": "ඒ කරුණ දැන් අවුරුදු ගණනකට අත් හිටලාය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Above all",
+    "idiom_si": "වෙන කිසිත් නැතත්",
+    "meaning": "more so than anything else",
+    "source_en": "<IDIOM>Above all</IDIOM>, be truthful.",
+    "target_si": "වෙන කිසිත් නැතත්, සත්‍යවාදී වනු.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Above-board",
+    "idiom_si": "සඟවන්න්ට දෙයක් නැති",
+    "meaning": "legitimate, honest, and open",
+    "source_en": "His conduct has been entirely <IDIOM>above-board</IDIOM>.",
+    "target_si": "ඔහුගේ හැසිරීම පිළිබඳව සැක කිරීමට හේතුවක් නැත.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Terms of abuse",
+    "idiom_si": "ආක්‍රෝශ පරිසව - වචන",
+    "meaning": "an unkind or unpleasant name to call someone",
+    "source_en": "He constantly addressed her in <IDIOM>terms of abuse</IDIOM>.",
+    "target_si": "ඔහු නිරන්තරයෙන් ඇයට ආක්‍රෝශ පරිභව වචනයෙන්\nකථා කළේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Cheek by jowl",
+    "idiom_si": "යා බදව",
+    "meaning": "close together",
+    "source_en": "The hospital and the cemetery were situated\n<IDIOM>cheek by jowl</IDIOM>.",
+    "target_si": "ආරෝග්‍ය ශාලාවත් සුසාන භූමියත් යාබදව පිහිටා තිබුණි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "With one accord",
+    "idiom_si": "එක අඩින්",
+    "meaning": "in a united way",
+    "source_en": "The audience praised the actor <IDIOM>with one accord</IDIOM>.",
+    "target_si": "ප්‍රේක්ෂක ජනයා එක හඬින් නළුවාට ප්‍රශංසා කළෝය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "An account to settle",
+    "idiom_si": "වාඩුව ගැනීමක්",
+    "meaning": "to harm someone because they have harmed you in the past",
+    "source_en": "I have <IDIOM>an account to settle</IDIOM> with my uncle for\nthe lies he has told about me.",
+    "target_si": "මා ගැන කියා තිබෙන බොරු වලට මගේ මාමාගෙන් මට\nවාඩුවක් ගන්ට තියෙයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Clear as crystal",
+    "idiom_si": "සක් සුදක් සේ පැහැදිලි",
+    "meaning": "obvious and very easy to understand",
+    "source_en": "It is as <IDIOM>clear as crystal</IDIOM> that it is you who sent\nthis article to the paper.",
+    "target_si": "මේ ලිපිය පත්‍රයට යැවූවේ ඔබ බව සක් සුදක් සේ\nපැහැදිලිය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Of no account",
+    "idiom_si": "වැඩක් නැති",
+    "meaning": "used to describe a person of little use or importance",
+    "source_en": "My advice to the young man was <IDIOM>of no account</IDIOM>.",
+    "target_si": "තරුණයට මා දුන් අවවාදයෙන් වැඩක් නොවීය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Gone to his account",
+    "idiom_si": "කාලක්‍රියා කළ",
+    "meaning": "someone has died",
+    "source_en": "The old carpenter has <IDIOM>gone to his account</IDIOM>.",
+    "target_si": "මහලු වඩුවා කාල ක්‍රියා කෙළේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "In the act",
+    "idiom_si": "බඩුත් එක්ක",
+    "meaning": "in the process of",
+    "source_en": "The thief was caught <IDIOM>in the act</IDIOM>.",
+    "target_si": "සොරා බඩුත් එක්ක අසුවුණි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Not to know from Adam",
+    "idiom_si": "උපොපන් ජාති අහලවත් නැති",
+    "meaning": "to have never met someone and not know anything about them",
+    "source_en": "Though he greeted me familiarly I did not know\nhim from Adam.",
+    "target_si": "දැන ඇඳුනුම් කමින් ඔහු මට ආචාර කළ නුමුත්, මා\nඋපෝපන් ජාති ඔහු ගැන අහලාවත් නැත.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "In addition to",
+    "idiom_si": "ඒ පිටට",
+    "meaning": "as well",
+    "source_en": "<IDIOM>In addition to</IDIOM> a fine, he was sent to prison.",
+    "target_si": "දඩ ගැසීම පිටට ඔහු බන්ධනාගාරයටද යවන ලදී.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Have the advantage of",
+    "idiom_si": "වැඩි වාසිය තියෙනවා",
+    "meaning": "to be in a superior or advantageous position",
+    "source_en": "He had the advantage of having been to a\nUniversity.",
+    "target_si": "විශ්ව විද්‍යාලයකට ගිය වැඩි වාසිය ඔහුට තිබුණි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "At an advanced age",
+    "idiom_si": "කල් වයස් ගිය කාලේ",
+    "meaning": "in old age",
+    "source_en": "My mother died <IDIOM>at an advanced age</IDIOM>.",
+    "target_si": "මගේ මව බොහෝ වයස් ගත වී කාලක්‍රියා කළාය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Underage",
+    "idiom_si": "වයසෙන් අඩු",
+    "meaning": "too young to engage legally in a particular activity",
+    "source_en": "He is still under age to enter the University.",
+    "target_si": "විශ්ව විද්‍යාලයට ඇතුල් වීමට ඔහු තවම වයසෙන් අඩුය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "AlI agog",
+    "idiom_si": "පුල පුලා",
+    "meaning": "very eager, excited, or full of expectation",
+    "source_en": "He found the village all agog with expectation.",
+    "target_si": "මුළු ගම බලාපොරොත්තුවෙන් පුල පුලා සිටි බව ඔහු\nදුටුවේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "In the air",
+    "idiom_si": "කටින් කට යන",
+    "meaning": "About to happen",
+    "source_en": "All our plans are still <IDIOM>in the air</IDIOM>.",
+    "target_si": "අපේ සෝජනා සියල්ලන්ම තවමත් අස්ථිර තත්ත්වයක\nපවතියි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Clear up",
+    "idiom_si": "පහදා ගන්නවා",
+    "meaning": "to make or become clear",
+    "source_en": "I am trying to <IDIOM>clear up</IDIOM> any misunderstanding.",
+    "target_si": "කිසියම් වරදවා තේරුම් ගැනීමක් වී නම් එය පහදා ගන්ට\nමම උත්සහ කරමි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Into thin air",
+    "idiom_si": "අතුරුදන්වී",
+    "meaning": "used to refer to someone or something disappearing suddenly and completely",
+    "source_en": "Owing to repeated misfortunes his early ambitions vanished <IDIOM>into thin air</IDIOM>.",
+    "target_si": "එක පිට එක වූ විපත්ති නිසා කලින් ඔහුට තිබුණු උදාර\nපරමාර්ථ අතුරුදන් වී ගියේ ය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Give oneself airs",
+    "idiom_si": "පුප්පනවා",
+    "meaning": "act pretentiously or snobbishly",
+    "source_en": "It is because he has been abroad that he gives\nhimself such airs.",
+    "target_si": "ඔහු එතරම් පුප්පන්නේ පිටරට ගොහින් තිබෙන නිසයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "False alarm",
+    "idiom_si": "බොරුවට භය ගැන්වීම",
+    "meaning": "a warning given about something that fails to happen.",
+    "source_en": "There was a <IDIOM>false alarm</IDIOM> that a lion had jumped\nout of a cage in the zoo.",
+    "target_si": "සත් චෝද්‍යානයේ සිංහයෙකු කූඩුවෙන් එළියට පැනලා යයි\nබොරුවට භය ගැන්වීමක් විය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "On the alert",
+    "idiom_si": "එක සීරුවෙන්",
+    "meaning": "to be watchful and fully prepared for something, especially danger or an unexpected even",
+    "source_en": "The whole village was <IDIOM>on the alert</IDIOM> to hear the\nresult of the election.",
+    "target_si": "මැතිවරණයේ ප්‍රතිඵල ඇසීමට මුළු ගම එක සීරුවෙන් බලා\nසිටියහ.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Alive and kicking",
+    "idiom_si": "පණ පිටින්",
+    "meaning": "prevalent and very active",
+    "source_en": "The old servant is still <IDIOM>alive and kicking</IDIOM>.",
+    "target_si": "ඒ මහලු මෙහෙකරුවා තවමත් පණ පිටින් සිටියි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Alive and kicking",
+    "idiom_si": "තවමත් පණ කඳ තියෙනවා",
+    "meaning": "prevalent and very active",
+    "source_en": "The old servant is still <IDIOM>alive and kicking</IDIOM>.",
+    "target_si": "ඒ මහලු මෙහෙකරුවාට තවමත් පණ කඳ තියෙනවා.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "All at once, or all of a sudden",
+    "idiom_si": "හිටිය ගමන්ම",
+    "meaning": "suddenly",
+    "source_en": "The man jumped out of the train all of a sudden.",
+    "target_si": "මිනිහා හිටිය ගමන්ම දුම්රියෙන් එළියට පැන්නේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "All the best",
+    "idiom_si": "සියලු යස ඉසුරක්",
+    "meaning": "wish a person well on ending a letter or parting",
+    "source_en": "I wish you <IDIOM>all the best</IDIOM>.",
+    "target_si": "මම ඔබට සියලු යස ඉසුරක්ම ප්‍රාර්ථනා කරමි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "On all fours",
+    "idiom_si": "හතර ගාතෙන්",
+    "meaning": "with your hands and knees on the ground",
+    "source_en": "The drunkard was stretched on the ground on\nall fours.",
+    "target_si": "බේබද්දා හතර ගාතෙන් බිම වැතිර සිටියේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "All in all",
+    "idiom_si": "සියල්ලෙන් සියල්ල",
+    "meaning": "on the whole",
+    "source_en": "My child is <IDIOM>all in all</IDIOM> to me.",
+    "target_si": "මගේ දරුවා මට සියල්ලෙන් සියල්ලය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "All one",
+    "idiom_si": "කොයිකත් එකයි",
+    "meaning": "all the same",
+    "source_en": "It's <IDIOM>all one</IDIOM> to me whether you stay here or go\nhome",
+    "target_si": "ඔබ මෙහේ සිටියත් ගෙදර ගියත්, කොයිකත් මට එකයි",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "It's all up",
+    "idiom_si": "ඔක්කම හමාරයි",
+    "meaning": "something is finished",
+    "source_en": "<IDIOM>It's all up</IDIOM>, the flood water has surrounded the\nhouse.",
+    "target_si": "ඔක්කම හමාරයි, ගං වතුර ගේ වටකරගෙනය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "For all that",
+    "idiom_si": "ඒ කෙසේ වෙතත්",
+    "meaning": "in spite of something",
+    "source_en": "He is blind, but <IDIOM>for all that</IDIOM>, he's the happiest man I know.",
+    "target_si": "ඔහු අන්ධය; ඒ කෙසේ වෙතත්, ඔහු මා දන්නා ඉතා\nවාසනාවන්ත මනුෂ්‍යයාය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Apple of one's eye",
+    "idiom_si": "ඇහැ වාගේ",
+    "meaning": "a person of whom one is extremely fond and proud",
+    "source_en": "The youngest son is the apple of his eye.",
+    "target_si": "බාලම පුතා ඔහුට ඔහුගේ ඇහැ වාගෙයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Tied to one's mother's apron-strings",
+    "idiom_si": "සාරී පොටේ එල්ලිලා",
+    "meaning": "strongly influenced and controlled by that person",
+    "source_en": "<IDIOM>Tied to one's mother's apron-strings</IDIOM>.",
+    "target_si": "කිසිවක් තනිවම කරගන්ට බැරිව සාරි පොටේ එල්ලිලා.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "With open arms",
+    "idiom_si": "දෑත විදහා",
+    "meaning": "in a very friendly way",
+    "source_en": "The kind old woman received the stranger with\nopen arms.",
+    "target_si": "කරුණාවන්ත මහලු ස්ත්‍රිය අමුත්තා සාදරයෙන් පිළි\nගත්තාය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Under arms",
+    "idiom_si": "සන්නාහ සන්නද්ධ",
+    "meaning": "provided with weapons and willing to fight",
+    "source_en": "Within a month the entire German forces were\n<IDIOM>under arms</IDIOM>.",
+    "target_si": "මාසයක් තුළ දී ජර්මන් බල සේනා සියල්ලම සන්නාහ\nසන්නද්ධ වූහ.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Star in the ascendant",
+    "idiom_si": "නගින කලාව",
+    "meaning": "someone or something is becoming increasingly powerful, influential, or popular",
+    "source_en": "His star is in the ascendant.",
+    "target_si": "ඔහුට දැන් නගින කලාවයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Axe to grind",
+    "idiom_si": "තමුන්ගේ මල්ල පුරවා ගැනීම",
+    "meaning": "to have a strong personal opinion about something that you want people to accept and that is the reason why you do something",
+    "source_en": "He joined the party because he has an axe to\ngrind.",
+    "target_si": "පෞද්ගලික ප්‍රයෝජනය සඳහා ඔහු පක්ෂයට බැඳුණේ ය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Back out",
+    "idiom_si": "අයින් වෙනවා",
+    "meaning": "to decide not to do something that you had said you would do",
+    "source_en": "At first he promised to join us or the trip, but\nnow he is trying to <IDIOM>back out</IDIOM>.",
+    "target_si": "අපත් සමග ඒ ගමනේ යාමට මුලදී ඔහු පොරොන්දු වූ\nනුමුත් දැන් මග අරින්ට තැත් කරයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Back door",
+    "idiom_si": "පස්සා දොර",
+    "meaning": "used to refer to an indirect way of achieving something, especially so that people do not know about it and so cannot object to it",
+    "source_en": "He is one of those who have come into the\nDepartment through the <IDIOM>back door</IDIOM>.",
+    "target_si": "ඔහු පස්සා දොරෙන් දෙපාර්තමේන්තුවට ආ කෙනෙකි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Behind one's back",
+    "idiom_si": "නැති තැන",
+    "meaning": "without one's knowledge; secretly or deceitfully",
+    "source_en": "It is wrong to accuse people behind their back.",
+    "target_si": "මිනිසුන් නැති තැන ඔවුන්ට විරුද්ධව චෝදනා කිරීම\nවැරදිය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Hang back",
+    "idiom_si": "පස්ස ගහනවා",
+    "meaning": "to show unwillingness to advance or come forward",
+    "source_en": "He is not the man to <IDIOM>hang back</IDIOM> from any task.",
+    "target_si": "කිසියම් කාර්යයකින් හෝ පස්ස ගහන විධියේ මිනිහෙක්\nනොවෙයි ඔහු.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Put one's back up",
+    "idiom_si": "කේන්ති යස්සනවා",
+    "meaning": "to annoy someone",
+    "source_en": "Her rudeness always puts my back up.",
+    "target_si": "ඇගේ නොහික් මුණු ගතිය තිස්සේම මා කේන්ති ගස්සයි.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "When one's back is turned",
+    "idiom_si": "අහක බලා සිටින කල",
+    "meaning": "someone is not present or not paying attention",
+    "source_en": "The boy made faces at the teacher when his\nback was turned.",
+    "target_si": "ගුරුවරයා අහක බලා සිටි කල, ළමයා ඔහුට ඔච්චම්\nකෙළේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Bring home the bacon",
+    "idiom_si": "ගෝස්තරේ හොයා දෙනවා",
+    "meaning": "to earn money for a family to live on",
+    "source_en": "It was Tennyson's poetry that brought home\nthe bacon, not his plays.",
+    "target_si": "ටෙනිසන්ට ආර්ථික ප්‍රයෝජනයක් ලැබුණේ ඔහුගේ\nකාව්‍යයෙන්ය, නාට්‍ය වලින් නොවේ.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Save one's bacon",
+    "idiom_si": "ඇඟ බේරා ගන්නවා",
+    "meaning": "to help someone avoid getting into trouble",
+    "source_en": "He would have failed at the examination, but\nhis history paper saved his bacon",
+    "target_si": "ඔහු විභාගයෙන් අසමර්ථ වෙන්ට තිබුණු නමුත් ඉතිහාස\nපත්‍රයෙන් ඇඟ බේරා ගත්තේය.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "A bad egg",
+    "idiom_si": "ගතයුත්තකට නැති",
+    "meaning": "a person who is bad, dishonest, or unreliable; a good-for-nothing",
+    "source_en": "He is altogether <IDIOM>a bad egg</IDIOM>",
+    "target_si": "ඔහු සෑමාකාරයෙන්ම ගතයුත්තකට නැති මිනිහෙක්.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Bad debts",
+    "idiom_si": "අනිත් ජාතියේ ලැබෙන ණය",
+    "meaning": "a debt, or debt, that is not likely to be paid:",
+    "source_en": "The total sum to be regarded as <IDIOM>bad debts</IDIOM> is\nnearly Rs. 5,000.",
+    "target_si": "ආපසු නොලැබෙන ණය හැටියට සැලකිය යුතු මුළු ගණන\nරුපියල් 5,000 ක් පමණ වේ.",
+    "evaluation": "Yes"
+  },
+  {
+    "idiom_en": "Strike a balance",
+    "idiom_si": "වාසි අවාසි බලනවා",
+    "meaning": "to determine the exact difference, if any, between the two sides of an account or set of accounts",
+    "source_en": "Striking a balance, I shall be better off in\nCeylon than in Australia.",
+    "target_si": "වාසි අවාසි බැලූ කල, ඔස්ට්රේලියාවට වඩා ලංකාවේ මට\nවැඩිය සරු වෙයි.",
+    "evaluation": "Yes"
+  }
+]
