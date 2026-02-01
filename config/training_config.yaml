@@ -5,58 +5,42 @@ model:
   source_lang: "eng_Latn"
   target_lang: "sin_Sinh"
 
+special_tokens:
+  idiom_start: ""
+
+training:
+  num_epochs: 10
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0003
+  warmup_steps: 100
+  weight_decay: 0.01
+  max_length: 128
+
 lora:
   r: 16
   lora_alpha: 32
   lora_dropout: 0.05
-  target_modules: 
+  target_modules:
     - "q_proj"
     - "v_proj"
-    - "k_proj"
-    - "out_proj"
 
-training:
-  learning_rate: 3e-4
-  num_epochs: 10
-  batch_size: 4
-  gradient_accumulation_steps: 4
-  warmup_steps: 100
-  weight_decay: 0.01
-  max_length: 128
-  
-optimizer:
-  type: "adamw"
-  
-scheduler:
-  type: "linear"
-
-# Data paths
 data:
   raw_excel: "data/raw/idiom_dataset.xlsx"
   train_json: "data/processed/train.json"
   test_json: "data/processed/test.json"
   augmented_json: "data/processed/augmented_train.json"
-  test_size: 50  # First 50 rows for testing
+  test_size: 50
 
-# Model save paths
 paths:
   checkpoints: "models/checkpoints"
   final_model: "models/final"
-  
-# Output paths
+
 outputs:
   predictions: "outputs/predictions/test_results.json"
   metrics: "outputs/metrics/evaluation_results.json"
   logs: "outputs/logs"
 
-# Training settings
 settings:
-  use_fp16: true  # Use mixed precision if GPU available
-  early_stopping_patience: 3
-  save_every_epoch: true
   seed: 42
-
-# Special tokens
-special_tokens:
-  idiom_start: "<IDIOM>"
-  idiom_end: "</IDIOM>"
+  use_fp16: false
