@@ -4,10 +4,6 @@ models/checkpoints/*
 models/final/*
 !models/*/.gitkeep
 
-# Data files
-data/raw/*.xlsx
-data/processed/*.json
-*.csv
 
 # Python
 __pycache__/
