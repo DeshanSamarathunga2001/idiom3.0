@@ -9,7 +9,8 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from transformers import (
     NllbTokenizer,
-    M2M100ForConditionalGeneration,
+    AutoModelForSeq2SeqLM,
+    AutoTokenizer,
     Seq2SeqTrainingArguments,
     Seq2SeqTrainer,
     DataCollatorForSeq2Seq
@@ -33,24 +34,28 @@ def setup_model_and_tokenizer(
     Returns:
         model, tokenizer
     """
+    import re
+    
     print(f"Loading model: {model_name}")
     
-    # Load tokenizer
-    tokenizer = NllbTokenizer.from_pretrained(model_name)
-    print(f"✓ Loaded {tokenizer.__class__.__name__}")
-    print(f"  Tokenizer type: {tokenizer.__class__.__name__}")
+    # Load tokenizer - try NLLB-specific first, then Auto
+    tokenizer = None
+    try:
+        tokenizer = NllbTokenizer.from_pretrained(model_name)
+        print(f"✓ Loaded NllbTokenizer")
+    except:
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        print(f"✓ Loaded AutoTokenizer")
     
-    # Load model (DON'T add special tokens or resize)
-    model = M2M100ForConditionalGeneration.from_pretrained(
-        model_name,
-        torch_dtype=torch.float32
-    )
+    print(f"  Tokenizer type: {type(tokenizer).__name__}")
+    
+    # Load model with AutoModelForSeq2SeqLM (NOT M2M100!)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     
     print(f"✓ Vocabulary size: {len(tokenizer)} (unchanged)")
     
     # Manually add lang_code_to_id if missing
     if not hasattr(tokenizer, 'lang_code_to_id'):
-        import re
         vocab = tokenizer.get_vocab()
         lang_code_pattern = re.compile(r'^[a-z]{3}_[A-Z][a-z]{3}$')
         
