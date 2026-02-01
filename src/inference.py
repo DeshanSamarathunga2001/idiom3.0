@@ -219,3 +219,58 @@ def translate_with_idiom(text: str, model, tokenizer, src_lang: str = "eng_Latn"
         Translated text
     """
     return translate(text, model, tokenizer, src_lang, tgt_lang)
+
+
+def translate_with_idioms(
+    model,
+    tokenizer,
+    source_texts: List[str],
+    src_lang: str = "eng_Latn",
+    tgt_lang: str = "sin_Sinh",
+    max_length: int = 128,
+    num_beams: int = 5
+) -> List[str]:
+    """
+    Translate multiple texts that may contain idiom tags.
+    
+    Args:
+        model: Translation model
+        tokenizer: Tokenizer
+        source_texts: List of source texts with optional <IDIOM>...</IDIOM> tags
+        src_lang: Source language code
+        tgt_lang: Target language code
+        max_length: Maximum length of generated translations
+        num_beams: Number of beams for beam search
+        
+    Returns:
+        List of translated texts
+    """
+    return batch_translate(
+        texts=source_texts,
+        model=model,
+        tokenizer=tokenizer,
+        src_lang=src_lang,
+        tgt_lang=tgt_lang,
+        max_length=max_length,
+        batch_size=len(source_texts),  # Process all at once for simplicity
+        num_beams=num_beams
+    )
+
+
+def extract_idioms(text: str) -> List[str]:
+    """
+    Extract idioms from text marked with <IDIOM>...</IDIOM> tags.
+    
+    Args:
+        text: Text containing idiom tags
+        
+    Returns:
+        List of extracted idiom phrases (without tags)
+    """
+    import re
+    
+    # Find all text between <IDIOM> and </IDIOM> tags
+    pattern = r'<IDIOM>(.*?)</IDIOM>'
+    idioms = re.findall(pattern, text, re.IGNORECASE)
+    
+    return [idiom.strip() for idiom in idioms]

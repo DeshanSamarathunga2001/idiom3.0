@@ -244,3 +244,168 @@ def save_metrics(metrics: Dict, output_path: str) -> None:
         json.dump(metrics, f, ensure_ascii=False, indent=2)
     
     print(f"✓ Metrics saved to {output_path}")
+
+
+def evaluate_model(
+    model,
+    tokenizer,
+    test_data: List[Dict],
+    src_lang: str = "eng_Latn",
+    tgt_lang: str = "sin_Sinh",
+    max_length: int = 128,
+    num_beams: int = 5
+) -> tuple:
+    """
+    Evaluate model on test data.
+    
+    Args:
+        model: Translation model
+        tokenizer: Tokenizer
+        test_data: List of test examples with 'source_en', 'target_si', 'idiom_en', 'idiom_si'
+        src_lang: Source language code
+        tgt_lang: Target language code
+        max_length: Maximum generation length
+        num_beams: Number of beams for generation
+        
+    Returns:
+        Tuple of (metrics_dict, predictions_list)
+    """
+    from .inference import batch_translate, extract_idioms
+    
+    # Extract source texts
+    source_texts = [ex['source_en'] for ex in test_data]
+    
+    # Generate translations
+    print(f"Translating {len(source_texts)} examples...")
+    predictions = batch_translate(
+        texts=source_texts,
+        model=model,
+        tokenizer=tokenizer,
+        src_lang=src_lang,
+        tgt_lang=tgt_lang,
+        max_length=max_length,
+        batch_size=8,
+        num_beams=num_beams
+    )
+    
+    # Calculate metrics
+    references = [ex['target_si'] for ex in test_data]
+    bleu_score = calculate_bleu(predictions, references)
+    
+    # Calculate chrF score
+    try:
+        chrf = sacrebleu.corpus_chrf(predictions, [[ref] for ref in references])
+        chrf_score = chrf.score
+    except Exception as e:
+        print(f"⚠️  Could not calculate chrF: {e}")
+        chrf_score = 0.0
+    
+    # Idiom-specific metrics
+    idiom_correct = 0
+    idiom_partial = 0
+    total_with_idioms = 0
+    
+    detailed_predictions = []
+    
+    for i, (pred, example) in enumerate(zip(predictions, test_data)):
+        source = example['source_en']
+        reference = example['target_si']
+        idiom_si = example.get('idiom_si', '')
+        
+        # Extract idioms from source, prediction, and reference
+        source_idioms = extract_idioms(source)
+        predicted_idioms = extract_idioms(pred)
+        reference_idioms = extract_idioms(reference)
+        
+        # Check if idiom is correctly translated
+        has_idiom = len(source_idioms) > 0
+        if has_idiom:
+            total_with_idioms += 1
+            
+            # Exact match: predicted idioms match reference idioms
+            if predicted_idioms and reference_idioms:
+                if any(p_idiom in r_idiom or r_idiom in p_idiom 
+                       for p_idiom in predicted_idioms 
+                       for r_idiom in reference_idioms):
+                    idiom_correct += 1
+                    idiom_partial += 1
+                elif idiom_si and any(idiom_si in pred_idiom for pred_idiom in predicted_idioms):
+                    idiom_partial += 1
+            # Partial match: idiom_si appears in prediction (even without tags)
+            elif idiom_si and idiom_si in pred:
+                idiom_partial += 1
+        
+        detailed_predictions.append({
+            'source': source,
+            'prediction': pred,
+            'reference': reference,
+            'source_idioms': source_idioms,
+            'predicted_idioms': predicted_idioms,
+            'reference_idioms': reference_idioms,
+            'bleu': calculate_bleu([pred], [reference])
+        })
+    
+    # Calculate idiom accuracy
+    idiom_accuracy = (idiom_correct / total_with_idioms * 100) if total_with_idioms > 0 else 0.0
+    idiom_partial_accuracy = (idiom_partial / total_with_idioms * 100) if total_with_idioms > 0 else 0.0
+    
+    metrics = {
+        'bleu': bleu_score,
+        'chrf': chrf_score,
+        'idiom_accuracy': idiom_accuracy,
+        'idiom_partial_accuracy': idiom_partial_accuracy,
+        'total_examples': len(test_data),
+        'examples_with_idioms': total_with_idioms,
+        'idioms_correctly_translated': idiom_correct,
+        'idioms_partially_translated': idiom_partial
+    }
+    
+    return metrics, detailed_predictions
+
+
+def print_evaluation_report(metrics: Dict) -> None:
+    """
+    Print a formatted evaluation report.
+    
+    Args:
+        metrics: Metrics dictionary from evaluate_model
+    """
+    print("=" * 80)
+    print("EVALUATION REPORT")
+    print("=" * 80)
+    print()
+    print(f"Overall Metrics:")
+    print(f"  BLEU Score:             {metrics.get('bleu', 0):.2f}")
+    print(f"  chrF Score:             {metrics.get('chrf', 0):.2f}")
+    print()
+    print(f"Idiom Translation:")
+    print(f"  Total examples:         {metrics.get('total_examples', 0)}")
+    print(f"  Examples with idioms:   {metrics.get('examples_with_idioms', 0)}")
+    print(f"  Idiom Accuracy:         {metrics.get('idiom_accuracy', 0):.2f}%")
+    print(f"  Idiom Partial Accuracy: {metrics.get('idiom_partial_accuracy', 0):.2f}%")
+    print()
+    print("=" * 80)
+
+
+def save_predictions(
+    predictions: List[Dict],
+    references: List[str],
+    source_texts: List[str],
+    output_path: str
+) -> None:
+    """
+    Save predictions to JSON file.
+    
+    Args:
+        predictions: List of prediction dictionaries from evaluate_model
+        references: List of reference translations (not used, kept for compatibility)
+        source_texts: List of source texts (not used, kept for compatibility)
+        output_path: Path to save predictions
+    """
+    output_file = Path(output_path)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(predictions, f, ensure_ascii=False, indent=2)
+    
+    print(f"✓ Predictions saved to {output_path}")
