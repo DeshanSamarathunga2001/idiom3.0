@@ -29,7 +29,7 @@ def load_trained_model(checkpoint_path: str, base_model: str = None):
     try:
         model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint_path)
         print("✓ Loaded full model")
-    except:
+    except (OSError, ValueError) as e:
         # If that fails, try loading as PEFT model
         if base_model is None:
             raise ValueError("base_model must be provided when loading PEFT adapters")
