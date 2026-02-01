@@ -1,0 +1,31 @@
+# Model files (too large for git)
+models/base/*
+models/checkpoints/*
+models/final/*
+!models/*/.gitkeep
+
+# Data files
+data/raw/*.xlsx
+data/processed/*.json
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Outputs
+outputs/predictions/*
+outputs/metrics/*
+outputs/logs/*
+!outputs/*/.gitkeep
+
+# System
+.DS_Store
+Thumbs.db
+*.log
