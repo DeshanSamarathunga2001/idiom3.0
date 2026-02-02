@@ -66,10 +66,15 @@ main {
     border-color: #667eea;
 }
 
-#translateBtn {
-    width: 100%;
-    padding: 15px;
+.button-group {
+    display: flex;
+    gap: 10px;
     margin-top: 15px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 15px;
     font-size: 18px;
     font-weight: bold;
     color: white;
@@ -80,13 +85,29 @@ main {
     transition: transform 0.2s;
 }
 
-#translateBtn:hover {
+.button-group button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
-#translateBtn:active {
+.button-group button:active {
     transform: translateY(0);
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%) !important;
+}
+
+.info-text {
+    margin-top: 15px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+#idiomCount {
+    font-weight: bold;
+    color: #667eea;
 }
 
 .loading {
@@ -163,5 +184,9 @@ footer {
     
     main {
         padding: 20px;
+    }
+    
+    .button-group {
+        flex-direction: column;
     }
 }

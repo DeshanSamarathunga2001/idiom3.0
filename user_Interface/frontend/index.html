@@ -17,11 +17,20 @@
             <div class="input-section">
                 <h2>Enter English Sentence</h2>
                 <textarea id="inputText" placeholder="Type a sentence with an idiom... e.g., 'He kicked the bucket yesterday'"></textarea>
-                <button id="translateBtn" onclick="translate()">🔄 Translate & Learn</button>
+                
+                <div class="button-group">
+                    <button id="analyzeBtn" onclick="analyzeIdiom()">🔍 Analyze Idiom</button>
+                    <button id="randomBtn" onclick="browseRandom()" class="secondary-btn">🎲 Random Example</button>
+                </div>
+                
+                <p class="info-text">
+                    📚 Database: <span id="idiomCount">Loading...</span> idioms | 
+                    💡 Tip: <span aria-label="Press Control plus Enter to analyze">Press Ctrl+Enter to analyze</span>
+                </p>
             </div>
 
             <div id="loading" class="loading" style="display: none;">
-                ⏳ Translating...
+                ⏳ Analyzing...
             </div>
 
             <div id="results" class="results" style="display: none;">
@@ -62,7 +71,7 @@
         </main>
 
         <footer>
-            <p>Powered by NLLB-200 + LoRA Fine-tuning | 445 Idioms</p>
+            <p>Powered by NLLB-200 + LoRA Fine-tuning | Educational Demo</p>
         </footer>
     </div>
 
