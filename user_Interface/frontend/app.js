@@ -18,7 +18,9 @@ async function loadDatabase() {
 function detectIdiom(text) {
     const textLower = text.toLowerCase();
     for (let idiom of idiomDatabase) {
-        if (textLower.includes(idiom.idiom_en.toLowerCase())) {
+        // Remove asterisk prefix if present
+        const idiomText = idiom.idiom_en.replace(/^\*\s*/, '').toLowerCase();
+        if (textLower.includes(idiomText)) {
             return idiom;
         }
     }
@@ -59,7 +61,8 @@ function displayResults(inputText, detected) {
     if (detected) {
         // Show idiom section
         document.getElementById('idiomSection').style.display = 'block';
-        document.getElementById('idiomText').textContent = detected.idiom_en;
+        // Remove asterisk prefix for display
+        document.getElementById('idiomText').textContent = detected.idiom_en.replace(/^\*\s*/, '');
         document.getElementById('idiomMeaning').textContent = detected.meaning || 'N/A';
         document.getElementById('idiomSinhala').textContent = detected.idiom_si;
         
