@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 Idiom Translation Learning Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Idiom Translation Learning Tool</h1>
+            <p>Learn English idioms and their Sinhala translations</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <h2>Enter English Sentence</h2>
+                <textarea id="inputText" placeholder="Type a sentence with an idiom... e.g., 'He kicked the bucket yesterday'"></textarea>
+                <button id="translateBtn" onclick="translate()">🔄 Translate & Learn</button>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                ⏳ Translating...
+            </div>
+
+            <div id="results" class="results" style="display: none;">
+                <!-- Idiom Detection -->
+                <div id="idiomSection" class="card" style="display: none;">
+                    <h3>📚 Idiom Detected</h3>
+                    <div class="idiom-info">
+                        <p><strong>Idiom:</strong> <span id="idiomText"></span></p>
+                        <p><strong>Meaning:</strong> <span id="idiomMeaning"></span></p>
+                        <p><strong>Sinhala Equivalent:</strong> <span id="idiomSinhala"></span></p>
+                    </div>
+                </div>
+
+                <!-- Translation -->
+                <div class="card">
+                    <h3>🔄 Translation</h3>
+                    <div class="translation-box">
+                        <div class="lang-section">
+                            <label>🇬🇧 English:</label>
+                            <p id="outputEnglish"></p>
+                        </div>
+                        <div class="lang-section">
+                            <label>🇱🇰 Sinhala:</label>
+                            <p id="outputSinhala" class="sinhala-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example -->
+                <div id="exampleSection" class="card" style="display: none;">
+                    <h3>📖 Example Usage</h3>
+                    <div class="example-box">
+                        <p><strong>EN:</strong> <span id="exampleEn"></span></p>
+                        <p><strong>SI:</strong> <span id="exampleSi" class="sinhala-text"></span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by NLLB-200 + LoRA Fine-tuning | 445 Idioms</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

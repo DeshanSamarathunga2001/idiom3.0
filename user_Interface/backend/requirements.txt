@@ -1,0 +1,8 @@
+transformers
+torch
+peft
+sentencepiece
+protobuf
+accelerate
+flask
+flask-cors
