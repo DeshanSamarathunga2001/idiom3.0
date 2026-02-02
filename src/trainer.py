@@ -4,14 +4,12 @@ Handles model setup, training loop, and checkpointing.
 """
 
 import json
-import re
 import torch
 from pathlib import Path
 from typing import Dict, List, Optional
 from transformers import (
     NllbTokenizer,
-    AutoModelForSeq2SeqLM,
-    AutoTokenizer,
+    AutoModelForSeq2SeqLM,  # ✅ CHANGED FROM M2M100
     Seq2SeqTrainingArguments,
     Seq2SeqTrainer,
     DataCollatorForSeq2Seq
@@ -37,24 +35,19 @@ def setup_model_and_tokenizer(
     """
     print(f"Loading model: {model_name}")
     
-    # Load tokenizer - try NLLB-specific first, then Auto
-    tokenizer = None
-    try:
-        tokenizer = NllbTokenizer.from_pretrained(model_name)
-        print(f"✓ Loaded NllbTokenizer")
-    except Exception:
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        print(f"✓ Loaded AutoTokenizer")
+    # Load tokenizer
+    tokenizer = NllbTokenizer.from_pretrained(model_name)
+    print(f"✓ Loaded {tokenizer.__class__.__name__}")
+    print(f"  Tokenizer type: {tokenizer.__class__.__name__}")
     
-    print(f"  Tokenizer type: {type(tokenizer).__name__}")
-    
-    # Load model with AutoModelForSeq2SeqLM (NOT M2M100!)
+    # ✅ FIXED: Use AutoModelForSeq2SeqLM instead of M2M100
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
     
     print(f"✓ Vocabulary size: {len(tokenizer)} (unchanged)")
     
     # Manually add lang_code_to_id if missing
     if not hasattr(tokenizer, 'lang_code_to_id'):
+        import re
         vocab = tokenizer.get_vocab()
         lang_code_pattern = re.compile(r'^[a-z]{3}_[A-Z][a-z]{3}$')
         
@@ -106,16 +99,6 @@ def apply_lora(model, config: Dict):
 def prepare_dataset(data_path: str, tokenizer, src_lang: str, tgt_lang: str, max_length: int = 128):
     """
     Prepare dataset for training.
-
-    Args:
-        data_path: Path to JSON data file
-        tokenizer: Tokenizer instance
-        src_lang: Source language code
-        tgt_lang: Target language code
-        max_length: Maximum sequence length
-
-    Returns:
-        HuggingFace Dataset
     """
     # Load data
     with open(data_path, 'r', encoding='utf-8') as f:
@@ -123,7 +106,6 @@ def prepare_dataset(data_path: str, tokenizer, src_lang: str, tgt_lang: str, max
 
     print(f"✓ Loaded {len(data)} examples from {data_path}")
 
-    # Prepare dataset
     def preprocess_function(examples):
         # Set source language
         tokenizer.src_lang = src_lang
@@ -136,31 +118,41 @@ def prepare_dataset(data_path: str, tokenizer, src_lang: str, tgt_lang: str, max
             padding=False
         )
 
-        # Tokenize targets with target language
-        original_lang = tokenizer.src_lang
-        tokenizer.src_lang = tgt_lang
+        # Tokenize targets - for NLLB, we need to set forced_bos_token_id manually
+        # Get target language token ID
+        tgt_lang_id = tokenizer.lang_code_to_id.get(tgt_lang)
         
+        # Tokenize target text
         labels = tokenizer(
             examples['target_si'],
             max_length=max_length,
             truncation=True,
             padding=False
         )
-        
-        # Restore original language
-        tokenizer.src_lang = original_lang
 
-        model_inputs['labels'] = labels['input_ids']
-        
+        # Add the target language ID at the beginning if needed
+        if tgt_lang_id is not None:
+            # Prepend target language token to labels
+            processed_labels = []
+            for label_ids in labels['input_ids']:
+                # NLLB expects: [tgt_lang_id, ...tokens..., eos_token_id]
+                if label_ids[0] != tgt_lang_id:
+                    processed_labels.append([tgt_lang_id] + label_ids)
+                else:
+                    processed_labels.append(label_ids)
+            model_inputs['labels'] = processed_labels
+        else:
+            model_inputs['labels'] = labels['input_ids']
+
         return model_inputs
 
-    # Convert to HuggingFace dataset
+    # Convert to dataset
     dataset = Dataset.from_dict({
         'source_en': [ex['source_en'] for ex in data],
         'target_si': [ex['target_si'] for ex in data]
     })
 
-    # Apply preprocessing
+    # Tokenize
     tokenized_dataset = dataset.map(
         preprocess_function,
         batched=True,
@@ -169,38 +161,8 @@ def prepare_dataset(data_path: str, tokenizer, src_lang: str, tgt_lang: str, max
 
     return tokenized_dataset
 
-
-def train_model(
-    model,
-    tokenizer,
-    train_dataset,
-    config: Dict,
-    output_dir: str
-):
-    """
-    Train the model with the given configuration.
-
-    Args:
-        model: Model to train
-        tokenizer: Tokenizer instance
-        train_dataset: Training dataset
-        config: Training configuration
-        output_dir: Directory to save checkpoints
-
-    Returns:
-        Trained model and trainer
-    """
-    # Get target language token ID
-    tgt_lang = config.get('target_lang', 'sin_Sinh')
-    forced_bos_token_id = None
-    
-    if hasattr(tokenizer, 'lang_code_to_id') and tgt_lang in tokenizer.lang_code_to_id:
-        forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
-        print(f"✓ Using forced_bos_token_id: {forced_bos_token_id} for {tgt_lang}")
-    else:
-        print(f"⚠️  Warning: Could not get forced_bos_token_id for {tgt_lang}")
-    
-    # Training arguments
+def train_model(model, tokenizer, train_dataset, config: Dict, output_dir: str):
+    """Train the model."""
     training_args = Seq2SeqTrainingArguments(
         output_dir=output_dir,
         learning_rate=float(config.get('learning_rate', 3e-4)),
@@ -215,28 +177,14 @@ def train_model(
         fp16=config.get('use_fp16', False) and torch.cuda.is_available(),
         report_to="none",
         seed=int(config.get('seed', 42)),
-        predict_with_generate=False,
-        generation_config=None
     )
 
-    # Set the forced_bos_token_id on the model
-    if forced_bos_token_id is not None:
-        if hasattr(model, 'generation_config'):
-            model.generation_config.forced_bos_token_id = forced_bos_token_id
-            print(f"✓ Set model.generation_config.forced_bos_token_id = {forced_bos_token_id}")
-        if hasattr(model, 'config'):
-            model.config.forced_bos_token_id = forced_bos_token_id
-            print(f"✓ Set model.config.forced_bos_token_id = {forced_bos_token_id}")
-
-    # Data collator
     data_collator = DataCollatorForSeq2Seq(
         tokenizer=tokenizer,
         model=model,
-        padding=True,
-        label_pad_token_id=tokenizer.pad_token_id
+        padding=True
     )
 
-    # Trainer
     trainer = Seq2SeqTrainer(
         model=model,
         args=training_args,
@@ -246,20 +194,13 @@ def train_model(
 
     print("Starting training...")
     trainer.train()
-
     print("✓ Training completed")
+
     return model, trainer
 
 
 def save_checkpoint(model, tokenizer, path: str) -> None:
-    """
-    Save model checkpoint.
-
-    Args:
-        model: Model to save
-        tokenizer: Tokenizer to save
-        path: Output path
-    """
+    """Save model checkpoint."""
     output_path = Path(path)
     output_path.mkdir(parents=True, exist_ok=True)
 
@@ -267,18 +208,3 @@ def save_checkpoint(model, tokenizer, path: str) -> None:
     tokenizer.save_pretrained(output_path)
 
     print(f"✓ Checkpoint saved to {path}")
-
-
-def load_config(config_path: str) -> Dict:
-    """
-    Load configuration from YAML file.
-
-    Args:
-        config_path: Path to YAML config file
-
-    Returns:
-        Configuration dictionary
-    """
-    with open(config_path, 'r') as f:
-        config = yaml.safe_load(f)
-    return config
